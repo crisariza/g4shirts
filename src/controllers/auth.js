@@ -63,8 +63,6 @@ const googleSignin = async (req, res = response) => {
       id_token
     );
 
-    //console.log(name, givenName, familyName, email, imageUrl);
-
     let user = await User.findOne({ where: { email } });
 
     if (!user) {

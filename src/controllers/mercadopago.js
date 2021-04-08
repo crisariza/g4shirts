@@ -1,5 +1,4 @@
 const mercadopago = require ('mercadopago');
-const { succesfulCheckoutEmail } = require("../util/succesfulCheckoutEmail");
 
 mercadopago.configure({
     access_token: '***REMOVED***'
@@ -11,6 +10,7 @@ const MercadoPagoController = async (req, res) => {
 
   try{
     const response = await mercadopago.preferences.create(preference);
+    console.log(response);
     res.json(response);
   }catch(err){
     res.send(err);

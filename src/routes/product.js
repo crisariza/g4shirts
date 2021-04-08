@@ -19,6 +19,9 @@ const { PORT_API } = process.env;
 server.get("/", async (req, res) => {
   try {
     const products = await Product.findAll({
+      where: {
+        active: true,
+      },
       include: [
         {
           model: ProductPhotos,
@@ -240,7 +243,7 @@ server.post("/create", async (req, res) => {
       }
       if (image) {
         for (let i = 0; i < images.length; i++) {
-          let url = `http://localhost:${PORT_API}/products/image/${images[i]}`;
+          let url = `${PORT_API}/products/image/${images[i]}`;
 
           const [productPhotos, created] = await ProductPhotos.findOrCreate({
             where: { url },
@@ -302,20 +305,19 @@ server.get("/photo/:image", async (req, res) => {
 });
 
 //Ruta para eliminar un producto
-server.delete("/delete/:id", async (req, res) => {
+server.delete("/delete/:productId", async (req, res) => {
   try {
-    const { id } = req.params;
-    const productToDelete = await Product.destroy({
-      where: {
-        id: id,
-      },
+    const { productId } = req.params;
+    const productToDelete = await Product.update(
+      { active: false },
+      { where: { id: productId },
     });
     if (productToDelete > 0) {
       res.send(
-        "The product with the id of: " + id + " was deleted succesfully."
+        "The product with the id of: " + productId + " was deleted succesfully."
       );
     } else {
-      res.send("The product with the id of: " + id + " was not found.");
+      res.send("The product with the id of: " + productId + " was not found.");
     }
   } catch (err) {
     res.send(err.message);
@@ -328,23 +330,27 @@ server.put("/update/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, price } = req.body;
-    if (name || description || price) {
-      await Product.update(
-        {
-          name: name,
-          description: description,
-          price: price,
-        },
-        { where: { id: id } }
-      );
-      const latestProduct = await Product.findOne({ where: { id: id } });
-      if (latestProduct != null) {
-        res.json(latestProduct);
+    if (req.user && req.user.role == "admin") {
+      if (name || description || price) {
+        await Product.update(
+          {
+            name: name,
+            description: description,
+            price: price,
+          },
+          { where: { id: id } }
+        );
+        const latestProduct = await Product.findOne({ where: { id: id } });
+        if (latestProduct != null) {
+          res.json(latestProduct);
+        } else {
+          res.send("The product with the id of: " + id + " was not found.");
+        }
       } else {
-        res.send("The product with the id of: " + id + " was not found.");
+        res.send("You must provide at least a field.");
       }
     } else {
-      res.send("You must provide at least a field.");
+      res.sendStatus(401);
     }
   } catch (err) {
     res.send(err.message);
@@ -357,27 +363,33 @@ server.put("/stock/update/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { stock, size } = req.body;
-    if (stock && size) {
-      const latestProduct = await ProductSizes.findOne({ where: { id: id } });
-      if (latestProduct) {
-        await ProductSizes.update(
-          {
-            stock: stock,
-          },
-          { where: { productId: id, size: size } }
-        );
-        res.send(
-          "The stock of the size " +
-            size +
-            " in the productId of " +
-            id +
-            " was updated succesfully."
-        );
+    if (req.user && req.user.role == "admin") {
+      if (stock && size) {
+        const latestProduct = await ProductSizes.findOne({ where: { id: id } });
+        if (latestProduct) {
+          await ProductSizes.update(
+            {
+              stock: stock,
+            },
+            { where: { productId: id, size: size } }
+          );
+          res.send(
+            "The stock of the size " +
+              size +
+              " in the productId of " +
+              id +
+              " was updated succesfully."
+          );
+        } else {
+          res.send(
+            "The product_size with the id of: " + id + " was not found."
+          );
+        }
       } else {
-        res.send("The product_size with the id of: " + id + " was not found.");
+        res.send("You must provide the stock and size.");
       }
     } else {
-      res.send("You must provide the stock and size.");
+      res.sendStatus(401);
     }
   } catch (err) {
     res.send(err.message);

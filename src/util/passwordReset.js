@@ -28,7 +28,7 @@ let passwordReset = (user = {}) => {
         from: EMAIL_G4,
         subject: "Restablece tu contraseña en G4Shirts",
         html: `<h3>Hola ${user.name} ${user.surname}, como estas?</h3>
-        <p>Click <a href="http://localhost:${PORT_CLIENT}/password_reset_form/${user.id}">aquí</a> para restablecer tu contraseña</p>`,
+        <p>Click <a href="${PORT_CLIENT}/password_reset_form/${user.id}">aquí</a> para restablecer tu contraseña</p>`,
     })
     .then((resp) => {
       return resp;
