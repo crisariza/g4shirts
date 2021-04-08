@@ -353,7 +353,7 @@ server.put("/amount/decrement/:id", async (req, res) => {
           where: { id: id },
         });
         if (order) {
-          res.send("OrderDetail amount was decremented.");
+        res.send("OrderDetail amount was decremented.");
         } else {
           res.send("Order not found.");
         }
@@ -399,7 +399,6 @@ server.get("/state/:stateName/:userId", async (req, res) => {
 
 server.post("/checkout", async (req, res) => {
   const { userId, userEmail, orderId, paymentId, total } = req.body;
-  console.log(req.body);
   try {
     await stripe.paymentIntents.create({
       amount: total,
@@ -408,6 +407,24 @@ server.post("/checkout", async (req, res) => {
       payment_method: paymentId,
       confirm: true,
     });
+    const orders = await Order.findOne({
+      where: { id: orderId },
+      include: [
+        {
+          model: OrderDetails,
+          as: "OrderDetails",
+        },
+      ],
+    });
+    for (let i = 0; i < orders.OrderDetails.length; i++) {
+      await ProductSizes.decrement(["stock"], {
+        by: orders.OrderDetails[i].amount,
+        where: {
+          productId: orders.OrderDetails[i].productId,
+          size: orders.OrderDetails[i].size,
+        },
+      });
+    }
     await Order.update(
       {
         state: "Pending",
@@ -420,26 +437,8 @@ server.post("/checkout", async (req, res) => {
         state: "Active",
       },
     });
-    const orders = await Order.findOne(
-      {
-        include: [
-          {
-            model: OrderDetails,
-            as: "OrderDetails",
-          },
-        ],
-      },
-      { where: { id: orderId } }
-    );
-    for (let i = 0; i < orders.OrderDetails.length; i++) {
-      await ProductSizes.decrement(["stock"], {
-        by: orders.OrderDetails[i].amount,
-        where: { id: orders.OrderDetails[i].productId },
-      });
-    }
     succesfulCheckoutEmail(userEmail);
     res.send("The payment was successful.");
-    //todo order active
   } catch (error) {
     console.log(error);
     return res.json(error);
@@ -537,4 +536,5 @@ server.post("/complete", async (req, res) => {
     return res.json(error);
   }
 });
+
 module.exports = server;

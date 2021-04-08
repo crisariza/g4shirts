@@ -16,7 +16,7 @@ const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])
 //Ruta para obtener todos los usuarios
 server.get("/", async (req, res) => {
   try {
-    if (req.user) {
+    if (req.user && req.user.role == "admin") {
       const allUsers = await User.findAll({ include: { model: Role } });
       res.json(allUsers);
     } else {
@@ -91,7 +91,7 @@ server.post("/login", async function (req, res, next) {
         }
       }
       return res.json({
-        token: jwt.sign(user, firma, { expiresIn: "5h" }),
+        token: jwt.sign(user, firma, { expiresIn: "7m" }),
         userData,
       });
     }

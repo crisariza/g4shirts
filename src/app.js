@@ -5,6 +5,10 @@ const morgan = require("morgan");
 const routes = require("./routes/index.js");
 const passport = require("./routes/passport");
 const cors = require("cors");
+const firma = "ecomerce04";
+const jwt = require("jsonwebtoken");
+const moment = require("moment");
+const { PORT_CLIENT } = process.env;
 
 require("./db.js");
 
@@ -18,7 +22,7 @@ server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
 server.use(morgan("dev"));
 server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", `${PORT_CLIENT}`); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
@@ -28,6 +32,19 @@ server.use((req, res, next) => {
   next();
 });
 server.use(passport.initialize());
+server.all("*", function (req, res, next) {
+  let token2 =
+    req.headers.authorization &&
+    req.headers.authorization.replace(/['"]+/g, "");
+  token2 = token2 && token2.slice(7, token2.length - 1);
+  if (token2) {
+    let payload2 = jwt.decode(token2, firma);
+    if (payload2 && payload2.exp <= moment().unix()) {
+      return res.status(401).send({ message: "Token expirado" });
+    }
+  }
+  next();
+});
 server.all("*", function (req, res, next) {
   passport.authenticate("bearer", function (err, user) {
     if (err) return next(err);
