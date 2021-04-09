@@ -1,7 +1,7 @@
 const server = require("express").Router();
 const nodemailer = require("nodemailer");
 const { User } = require("../db.js");
-const { EMAIL_G4, EMAIL_PASSWORD } = process.env;
+const { EMAIL_ADDRESS, EMAIL_PASSWORD } = process.env;
 
 const transport = {
   //configuración para enviar email
@@ -10,7 +10,7 @@ const transport = {
   port: 587,
   secure: false,
   auth: {
-    user: EMAIL_G4,
+    user: EMAIL_ADDRESS,
     pass: EMAIL_PASSWORD,
   },
 };
@@ -27,7 +27,7 @@ server.post("/send", (req, res) => {
   transporter
     .sendMail({
       to: email,
-      from: EMAIL_G4,
+      from: EMAIL_ADDRESS,
       subject: subject,
       html: `<h3>Hola ${name}, como estas?</h3>
         <p>${message}</p>`,

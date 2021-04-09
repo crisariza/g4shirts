@@ -1,6 +1,6 @@
 const server = require("express").Router();
 const nodemailer = require("nodemailer");
-const { EMAIL_G4, EMAIL_PASSWORD } = process.env;
+const { EMAIL_ADDRESS, EMAIL_PASSWORD } = process.env;
 
 const transport = {
   //configuración para enviar email
@@ -9,7 +9,7 @@ const transport = {
   port: 587,
   secure: false,
   auth: {
-    user: EMAIL_G4,
+    user: EMAIL_ADDRESS,
     pass: EMAIL_PASSWORD,
   },
 };
@@ -22,12 +22,12 @@ transporter.verify((error, success) => {
 });
 
 let packageSent = (user = {}) => {
-    transporter
-      .sendMail({
-        to: user.email,
-        from: EMAIL_G4,
-        subject: "Tus G4 Shirts ya están en camino!",
-        html: `<h3>Hola ${user.name}, como estas?</h3>
+  transporter
+    .sendMail({
+      to: user.email,
+      from: EMAIL_ADDRESS,
+      subject: "Tus G4 Shirts ya están en camino!",
+      html: `<h3>Hola ${user.name}, como estas?</h3>
         <p>Tu pedido llegará pronto a la siguiente dirección: ${user.street} ${user.number} en ${user.city}</p>`,
     })
     .then((resp) => {
@@ -39,5 +39,5 @@ let packageSent = (user = {}) => {
 };
 
 module.exports = {
-    packageSent,
-    };
+  packageSent,
+};

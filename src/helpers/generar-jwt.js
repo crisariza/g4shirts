@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const { User } = require("../db");
+const { PRIVATE_KEY } = process.env;
 
 const generarJWT = async (uid = "") => {
   const user = await User.findOne({
@@ -26,7 +27,7 @@ const generarJWT = async (uid = "") => {
 
     jwt.sign(
       payload,
-      process.env.SECRETORPRIVATEKEY,
+      PRIVATE_KEY,
       {
         expiresIn: "10m",
       },

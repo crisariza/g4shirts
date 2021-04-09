@@ -1,6 +1,6 @@
 const server = require("express").Router();
 const nodemailer = require("nodemailer");
-const { EMAIL_G4, EMAIL_PASSWORD } = process.env;
+const { EMAIL_ADDRESS, EMAIL_PASSWORD } = process.env;
 
 const transport = {
   //configuración para enviar email
@@ -9,7 +9,7 @@ const transport = {
   port: 587,
   secure: false,
   auth: {
-    user: EMAIL_G4,
+    user: EMAIL_ADDRESS,
     pass: EMAIL_PASSWORD,
   },
 };
@@ -25,7 +25,7 @@ let succesfulCheckoutEmail = (userEmail = "") => {
   transporter
     .sendMail({
       to: userEmail,
-      from: EMAIL_G4,
+      from: EMAIL_ADDRESS,
       subject: "G4 Shirts - Compra realizada exitosa!",
       html: `<!DOCTYPE html>
         <html>

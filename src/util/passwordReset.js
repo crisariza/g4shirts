@@ -1,6 +1,6 @@
 const server = require("express").Router();
 const nodemailer = require("nodemailer");
-const { EMAIL_G4, EMAIL_PASSWORD, PORT_CLIENT } = process.env;
+const { EMAIL_ADDRESS, EMAIL_PASSWORD, CLIENT_URL } = process.env;
 
 const transport = {
   //configuración para enviar email
@@ -9,7 +9,7 @@ const transport = {
   port: 587,
   secure: false,
   auth: {
-    user: EMAIL_G4,
+    user: EMAIL_ADDRESS,
     pass: EMAIL_PASSWORD,
   },
 };
@@ -22,13 +22,13 @@ transporter.verify((error, success) => {
 });
 
 let passwordReset = (user = {}) => {
-    transporter
-      .sendMail({
-        to: user.email,
-        from: EMAIL_G4,
-        subject: "Restablece tu contraseña en G4Shirts",
-        html: `<h3>Hola ${user.name} ${user.surname}, como estas?</h3>
-        <p>Click <a href="${PORT_CLIENT}/password_reset_form/${user.id}">aquí</a> para restablecer tu contraseña</p>`,
+  transporter
+    .sendMail({
+      to: user.email,
+      from: EMAIL_ADDRESS,
+      subject: "Restablece tu contraseña en G4Shirts",
+      html: `<h3>Hola ${user.name} ${user.surname}, como estas?</h3>
+        <p>Click <a href="${CLIENT_URL}/password_reset_form/${user.id}">aquí</a> para restablecer tu contraseña</p>`,
     })
     .then((resp) => {
       return resp;
@@ -39,5 +39,5 @@ let passwordReset = (user = {}) => {
 };
 
 module.exports = {
-    passwordReset,
-    };
+  passwordReset,
+};
