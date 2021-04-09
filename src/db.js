@@ -9,13 +9,14 @@ const {
   DATABASE_NAME,
 } = process.env;
 
-const sequelize = new Sequelize(
-  `postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}`,
-  {
-    logging: false, // set to console.log to see the raw SQL queries
-    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  }
-);
+const DATABASE_URL = process.env.DATABASE_URL
+  ? process.env.DATABASE_URL
+  : `postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}`;
+
+const sequelize = new Sequelize(DATABASE_URL, {
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+});
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -46,14 +47,12 @@ const {
   Category,
   Product,
   ProductPhotos,
-  ProductCategories,
   ProductSizes,
   Order,
   OrderDetails,
   Role,
   User,
   Review,
-  WishlistProducts,
 } = sequelize.models;
 
 Category.belongsToMany(Product, {
@@ -62,7 +61,6 @@ Category.belongsToMany(Product, {
 Product.belongsToMany(Category, {
   through: "ProductCategories",
 });
-
 Product.hasMany(ProductSizes, {
   foreingKey: "products_id",
   sourceKey: "id",
@@ -71,7 +69,6 @@ ProductSizes.belongsTo(Product, {
   foreingKey: "products_id",
   sourceKey: "id",
 });
-
 Product.hasMany(ProductPhotos, {
   foreingKey: "products_id",
   sourceKey: "id",
@@ -93,14 +90,8 @@ OrderDetails.belongsTo(Order, { foreingKey: "orders_id", sourceKey: "id" });
 Product.hasMany(OrderDetails, { foreingKey: "products_id", sourceKey: "id" });
 OrderDetails.belongsTo(Product, { foreingKey: "products_id", sourceKey: "id" });
 
-// User.belongsToMany(Product, { through: 'Review' });
-// Product.belongsToMany(User, { through: 'Review' });
-
 User.hasMany(Review, { foreingKey: "users_id", sourceKey: "id" });
 Review.belongsTo(User, { foreingKey: "users_id", sourceKey: "id" });
-
-// Product.hasMany(Review, { foreingKey: "products_id", sourceKey: "id" });
-// Review.belongsTo(Product, { foreingKey: "products_id", sourceKey: "id" });
 
 User.belongsToMany(Product, {
   through: "review",
@@ -114,17 +105,13 @@ Product.belongsToMany(Category, {
 Product.belongsToMany(User, {
   through: "review",
 });
-
 Product.hasMany(Review);
-
 User.belongsToMany(Product, {
   through: "WishlistProducts",
 });
 Product.belongsToMany(User, {
   through: "WishlistProducts",
 });
-
-//wishlist_products con user y productid
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
