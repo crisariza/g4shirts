@@ -2,10 +2,15 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+const {
+  DATABASE_USER,
+  DATABASE_PASSWORD,
+  DATABASE_HOST,
+  DATABASE_NAME,
+} = process.env;
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+  `postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}`,
   {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -48,7 +53,7 @@ const {
   Role,
   User,
   Review,
-  WishlistProducts
+  WishlistProducts,
 } = sequelize.models;
 
 Category.belongsToMany(Product, {
@@ -99,7 +104,8 @@ Review.belongsTo(User, { foreingKey: "users_id", sourceKey: "id" });
 
 User.belongsToMany(Product, {
   through: "review",
-});Category.belongsToMany(Product, {
+});
+Category.belongsToMany(Product, {
   through: "ProductCategories",
 });
 Product.belongsToMany(Category, {

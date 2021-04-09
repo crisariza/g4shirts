@@ -13,7 +13,7 @@ const {
   conn,
 } = require("../db.js");
 const { Op } = require("sequelize");
-const { PORT_API } = process.env;
+const { API_URL } = process.env;
 
 //Ruta para obtener todos los productos
 server.get("/", async (req, res) => {
@@ -243,7 +243,7 @@ server.post("/create", async (req, res) => {
       }
       if (image) {
         for (let i = 0; i < images.length; i++) {
-          let url = `${PORT_API}/products/image/${images[i]}`;
+          let url = `${API_URL}/products/image/${images[i]}`;
 
           const [productPhotos, created] = await ProductPhotos.findOrCreate({
             where: { url },
@@ -310,8 +310,8 @@ server.delete("/delete/:productId", async (req, res) => {
     const { productId } = req.params;
     const productToDelete = await Product.update(
       { active: false },
-      { where: { id: productId },
-    });
+      { where: { id: productId } }
+    );
     if (productToDelete > 0) {
       res.send(
         "The product with the id of: " + productId + " was deleted succesfully."
