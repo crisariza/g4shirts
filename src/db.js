@@ -16,8 +16,13 @@ const DATABASE_URL = process.env.DATABASE_URL
 const sequelize = new Sequelize(DATABASE_URL, {
   logging: false,
   native: false,
-  ssl: {
-    rejectUnauthorized: false,
+  dialect: "postgres",
+  protocol: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
   },
 });
 const basename = path.basename(__filename);
