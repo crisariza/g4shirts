@@ -20,10 +20,10 @@ const sequelize = new Sequelize(DATABASE_URL, {
   protocol: "postgres",
   dialectOptions: {
     // descomentar en heroku
-    /*  ssl: {
+    ssl: {
       require: true,
       rejectUnauthorized: false,
-    }, */
+    },
   },
 });
 const basename = path.basename(__filename);
