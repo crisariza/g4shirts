@@ -29,7 +29,7 @@ const generarJWT = async (uid = "") => {
       payload,
       PRIVATE_KEY,
       {
-        expiresIn: "10m",
+        expiresIn: "365d",
       },
       (err, token) => {
         if (err) {

@@ -91,7 +91,7 @@ server.post("/login", async function (req, res, next) {
         }
       }
       return res.json({
-        token: jwt.sign(user, firma, { expiresIn: "7m" }),
+        token: jwt.sign(user, firma, { expiresIn: "365d" }),
         userData,
       });
     }

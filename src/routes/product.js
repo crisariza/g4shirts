@@ -330,27 +330,24 @@ server.put("/update/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, price } = req.body;
-    if (req.user && req.user.role == "admin") {
-      if (name || description || price) {
-        await Product.update(
-          {
-            name: name,
-            description: description,
-            price: price,
-          },
-          { where: { id: id } }
-        );
-        const latestProduct = await Product.findOne({ where: { id: id } });
-        if (latestProduct != null) {
-          res.json(latestProduct);
-        } else {
-          res.send("The product with the id of: " + id + " was not found.");
-        }
+
+    if (name || description || price) {
+      await Product.update(
+        {
+          name: name,
+          description: description,
+          price: price,
+        },
+        { where: { id: id } }
+      );
+      const latestProduct = await Product.findOne({ where: { id: id } });
+      if (latestProduct != null) {
+        res.json(latestProduct);
       } else {
-        res.send("You must provide at least a field.");
+        res.send("The product with the id of: " + id + " was not found.");
       }
     } else {
-      res.sendStatus(401);
+      res.send("You must provide at least a field.");
     }
   } catch (err) {
     res.send(err.message);
@@ -363,30 +360,25 @@ server.put("/stock/update/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { stock, size } = req.body;
-    if (req.user && req.user.role == "admin") {
-      if (stock && size) {
-        const latestProduct = await ProductSizes.findOne({ where: { id: id } });
-        if (latestProduct) {
-          await ProductSizes.update(
-            {
-              stock: stock,
-            },
-            { where: { productId: id, size: size } }
-          );
-          res.send(
-            "The stock of the size " +
-              size +
-              " in the productId of " +
-              id +
-              " was updated succesfully."
-          );
-        } else {
-          res.send(
-            "The product_size with the id of: " + id + " was not found."
-          );
-        }
+
+    if (stock && size) {
+      const latestProduct = await ProductSizes.findOne({ where: { id: id } });
+      if (latestProduct) {
+        await ProductSizes.update(
+          {
+            stock: stock,
+          },
+          { where: { productId: id, size: size } }
+        );
+        res.send(
+          "The stock of the size " +
+            size +
+            " in the productId of " +
+            id +
+            " was updated succesfully."
+        );
       } else {
-        res.send("You must provide the stock and size.");
+        res.send("The product_size with the id of: " + id + " was not found.");
       }
     } else {
       res.sendStatus(401);
