@@ -65,21 +65,17 @@ server.delete("/delete/:id", async (req, res) => {
 //Ruta para modificar una categoría
 server.put("/update/:id", async (req, res) => {
   try {
-    if (req.user && req.user.role == "admin") {
-      const { name, description } = req.body;
-      const { id } = req.params;
-      await Category.update(
-        { name: name, description: description },
-        {
-          where: {
-            id: id,
-          },
-        }
-      );
-      res.send("The category with id: " + id + " was updated.");
-    } else {
-      res.sendStatus(401);
-    }
+    const { name, description } = req.body;
+    const { id } = req.params;
+    await Category.update(
+      { name: name, description: description },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+    res.send("The category with id: " + id + " was updated.");
   } catch (err) {
     res.send(err.message);
     console.log(err.message);
