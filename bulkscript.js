@@ -90,16 +90,16 @@ async function bulkScript() {
 
   const categories = [
     {
-      name: "Arte",
-      description: "Obras de arte famosas.",
+      name: "Art",
+      description: "Famous artists.",
     },
     {
-      name: "Cantantes",
-      description: "Los grandes músicos de esta generación.",
+      name: "Singers",
+      description: "The greatest singers of all time.",
     },
     {
-      name: "Bandas",
-      description: "Bandas que cambiaron el mundo del Rock.",
+      name: "Bands",
+      description: "Bands who changed the rock world.",
     },
   ];
   await Category.bulkCreate(categories);
@@ -109,117 +109,117 @@ async function bulkScript() {
     {
       name: "Miguel Angel",
       description:
-        "Rey David biblico en el momento previo a enfrentarse con Goliat, un simbolo de la Republica de Florencia.",
+        "Italian sculptor, painter, architect and poet of the High Renaissance born in the Republic of Florence.",
       price: 10,
     },
     {
       name: "Freddie Mercury",
       description:
-        "Freddie Mercury fue un cantante, compositor, pianista y musico britanico.",
+        "British singer, songwriter, record producer, and lead vocalist of the rock band Queen.",
       price: 15,
     },
     {
       name: "Axl Rose",
-      description:
-        "Axl Rose, es el cantante de la legendaria banda Guns N' Roses.",
+      description: "American musician, singer, songwriter and record producer.",
       price: 15,
     },
     {
       name: "Salvador Dali",
       description:
-        "Este cuadro reluce el uso de los relojes que se derriten al ser expuestos a la persistencia de la memoria.",
+        "Spanish surrealist artist renowned for his technical skill and precise draftsmanship.",
       price: 20,
     },
     {
       name: "Jim Morrison",
       description:
-        "Jim Morrison fue un cantautor y poeta estadounidense, vocalista de la mitica banda de rock The Doors.",
+        "Was an American singer, songwriter and poet, who was the lead vocalist of the rock band the Doors.",
       price: 30,
     },
     {
       name: "Slash",
       description:
-        "Es un músico y compositor británico-estadounidense de la legendaria banda de hard rock Guns N' Roses.",
+        "He is best known as the lead guitarist of the American hard rock band Guns N' Roses.",
       price: 30,
     },
     {
       name: "Charly Garcia",
-      description:
-        "Charly García es un cantautor, compositor, músico y productor argentino.",
+      description: "Argentine singer-songwriter, musician and record producer",
       price: 20,
     },
     {
       name: "Chuck Berry",
       description:
-        "Es considerado uno de los músicos más influyentes de la historia del rock and roll.",
+        "American singer, songwriter and guitarist, and one of the pioneers of rock and roll music.",
       price: 30,
     },
     {
       name: "Elvis",
-      description: "El Rey del Rock and Roll.",
+      description:
+        "He is regarded as one of the most significant cultural icons of the 20th century.",
       price: 50,
     },
     {
       name: "Fito Paez",
       description:
-        "Fito Paez es uno de los artistas más influyentes de la música latinoamericana.",
+        "Paez was born in Rosario, Santa Fe Province; his real name is Rodolfo Paez, like his father.",
       price: 25,
     },
     {
       name: "Fito en Vivo",
       description:
-        "Rodolfo Paez, mejor conocido como Fito Paez. Fotografía de un show en vivo.",
+        "Paez was born in Rosario, Santa Fe Province; his real name is Rodolfo Paez, like his father.",
       price: 30,
     },
     {
       name: "Mick Jagger",
       description:
-        "Mick Jagger es el cantante de la famosa banda Rolling Stones.",
+        "Lead singer and one of the founder members of the Rolling Stones.",
       price: 20,
     },
     {
       name: "El pibe Mick",
       description:
-        "Esta remera posee una fotografía de Mick Jagger en sus años de juventud.",
+        "Lead singer and one of the founder members of the Rolling Stones.",
       price: 55,
     },
     {
       name: "Kurt Cobain",
       description:
-        "Kurt Cobain, también conocido como el cantante de NIRVANA, es el músico mas influyente del Grunge.",
+        "American singer-songwriter and musician, best known as the guitarist, primary songwriter and frontman of the rock band Nirvana.",
       price: 15,
     },
     {
       name: "Jagger",
-      description: "Juventud del vocalista de los Rolling Stones, Mick Jagger.",
+      description:
+        "Lead singer and one of the founder members of the Rolling Stones.",
       price: 30,
     },
     {
       name: "Morrisey",
-      description: "atrick Morrissey es el vocalista de la banda The Smiths.",
+      description:
+        " He came to prominence as the frontman of rock band the Smiths.",
       price: 10,
     },
     {
       name: "Paul McCartney",
-      description:
-        "Paul McCartney, integrante de la grandiosa banda The Beatles.",
+      description: "The coolest vegan. Also Beatles member..",
       price: 35,
     },
     {
       name: "Ringo Starr",
       description:
-        "Ringo Starr, fue baterista de una de las bandas más influyentes de su época, The Beatles.",
+        "He occasionally sang lead vocals with the group, usually for one song on each album.",
       price: 40,
     },
     {
       name: "The Beatles",
-      description: "La legendaria banda The Beatles.",
+      description: "Greatest band of all time.",
       price: 30,
     },
     {
       name: "John Lennon",
       description:
-        "John Lennon fue un músico, uno de los miembros fundadores de la banda de rock The Beatles.",
+        "Who achieved worldwide fame as the founder, co-lead vocalist, and rhythm guitarist of the Beatles.",
       price: 30,
     },
   ];
@@ -553,29 +553,29 @@ async function bulkScript() {
 
   const reviews = [
     {
-      title: "No me gustó",
-      description: "El producto es de muy mala calidad.",
+      title: "Ddin't liked it",
+      description: "The product is really bad.",
       stars: 1,
       userId: 3,
       productId: 1,
     },
     {
       title: "Meh",
-      description: "No está tan bueno, la imagen esta bien impresa.",
+      description: "It's not good..",
       stars: 2,
       userId: 3,
       productId: 2,
     },
     {
-      title: "Excelente",
-      description: "Super comodo el algodón.",
+      title: "Excellent",
+      description: "I love it.",
       stars: 5,
       userId: 3,
       productId: 3,
     },
     {
       title: "Nice",
-      description: "Nice product.",
+      description: "I kinda like it.",
       stars: 4,
       userId: 3,
       productId: 4,

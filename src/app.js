@@ -40,7 +40,7 @@ server.all("*", function (req, res, next) {
   if (token2) {
     let payload2 = jwt.decode(token2, firma);
     if (payload2 && payload2.exp <= moment().unix()) {
-      return res.status(401).send({ message: "Token expirado" });
+      return res.status(401).send({ message: "Token expired." });
     }
   }
   next();

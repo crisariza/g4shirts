@@ -507,13 +507,13 @@ server.put("/passwordChange/:id", async (req, res) => {
         { password: hash },
         { where: { id: id, email: email } }
       )
-        .then(res.send("Update succesfully"))
+        .then(res.send("Updated succesfully."))
         .catch((err) => console.log(err));
     } else {
-      res.send("Password anterior incorrecta");
+      res.send("Password incorrect.");
     }
   } else {
-    res.send("Usuario no encontrado");
+    res.send("User not found.");
   }
 });
 
@@ -528,10 +528,10 @@ server.put("/passwordReset/:userId", async (req, res) => {
       { password: hash },
       { where: { id: userId } }
     )
-      .then(res.send("Update succesfully"))
+      .then(res.send("Updated succesfully."))
       .catch((err) => console.log(err));
   } else {
-    res.send("Usuario no encontrado");
+    res.send("User not found.");
   }
 });
 
