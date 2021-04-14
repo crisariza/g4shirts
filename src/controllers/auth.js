@@ -93,7 +93,7 @@ const googleSignin = async (req, res = response) => {
 
     if (!user.active) {
       return res.status.json({
-        message: "Hable con el administrador, usuario bloqueado",
+        message: "User blocked.",
       });
     }
 
@@ -131,7 +131,7 @@ const googleSignin = async (req, res = response) => {
     //res.json({message: "Vamos bien"});
   } catch (error) {
     res.status(400).json({
-      message: "Token de Google no es válido",
+      message: "The Google's Token is not valid.",
     });
   }
 };
