@@ -228,163 +228,163 @@ async function bulkScript() {
 
   const product_photos = [
     {
-      url: `${API_URL}/products/photo/CARD1.png`,
+      url: `${API_URL}/products/photo/CARD1`,
       productId: 1,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL1.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL1`,
       productId: 1,
     },
     {
-      url: `${API_URL}/products/photo/CARD2.png`,
+      url: `${API_URL}/products/photo/CARD2`,
       productId: 2,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL2.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL2`,
       productId: 2,
     },
     {
-      url: `${API_URL}/products/photo/CARD3.png`,
+      url: `${API_URL}/products/photo/CARD3`,
       productId: 3,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL3.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL3`,
       productId: 3,
     },
     {
-      url: `${API_URL}/products/photo/CARD4.png`,
+      url: `${API_URL}/products/photo/CARD4`,
       productId: 4,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL4.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL4`,
       productId: 4,
     },
     {
-      url: `${API_URL}/products/photo/CARD5.png`,
+      url: `${API_URL}/products/photo/CARD5`,
       productId: 5,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL5.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL5`,
       productId: 5,
     },
     {
-      url: `${API_URL}/products/photo/CARD6.png`,
+      url: `${API_URL}/products/photo/CARD6`,
       productId: 6,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL6.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL6`,
       productId: 6,
     },
     {
-      url: `${API_URL}/products/photo/CARD7.png`,
+      url: `${API_URL}/products/photo/CARD7`,
       productId: 7,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL7.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL7`,
       productId: 7,
     },
     {
-      url: `${API_URL}/products/photo/CARD8.png`,
+      url: `${API_URL}/products/photo/CARD8`,
       productId: 8,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL8.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL8`,
       productId: 8,
     },
     {
-      url: `${API_URL}/products/photo/CARD9.png`,
+      url: `${API_URL}/products/photo/CARD9`,
       productId: 9,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL9.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL9`,
       productId: 9,
     },
     {
-      url: `${API_URL}/products/photo/CARD10.png`,
+      url: `${API_URL}/products/photo/CARD10`,
       productId: 10,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL10.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL10`,
       productId: 10,
     },
     {
-      url: `${API_URL}/products/photo/CARD11.png`,
+      url: `${API_URL}/products/photo/CARD11`,
       productId: 11,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL11.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL11`,
       productId: 11,
     },
     {
-      url: `${API_URL}/products/photo/CARD12.png`,
+      url: `${API_URL}/products/photo/CARD12`,
       productId: 12,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL12.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL12`,
       productId: 12,
     },
     {
-      url: `${API_URL}/products/photo/CARD13.png`,
+      url: `${API_URL}/products/photo/CARD13`,
       productId: 13,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL13.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL13`,
       productId: 13,
     },
     {
-      url: `${API_URL}/products/photo/CARD14.png`,
+      url: `${API_URL}/products/photo/CARD14`,
       productId: 14,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL14.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL14`,
       productId: 14,
     },
     {
-      url: `${API_URL}/products/photo/CARD15.png`,
+      url: `${API_URL}/products/photo/CARD15`,
       productId: 15,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL15.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL15`,
       productId: 15,
     },
     {
-      url: `${API_URL}/products/photo/CARD16.png`,
+      url: `${API_URL}/products/photo/CARD16`,
       productId: 16,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL16.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL16`,
       productId: 16,
     },
     {
-      url: `${API_URL}/products/photo/CARD17.png`,
+      url: `${API_URL}/products/photo/CARD17`,
       productId: 17,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL17.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL17`,
       productId: 17,
     },
     {
-      url: `${API_URL}/products/photo/CARD18.png`,
+      url: `${API_URL}/products/photo/CARD18`,
       productId: 18,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL18.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL18`,
       productId: 18,
     },
     {
-      url: `${API_URL}/products/photo/CARD19.png`,
+      url: `${API_URL}/products/photo/CARD19`,
       productId: 19,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL19.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL19`,
       productId: 19,
     },
     {
-      url: `${API_URL}/products/photo/CARD20.png`,
+      url: `${API_URL}/products/photo/CARD20`,
       productId: 20,
     },
     {
-      url: `${API_URL}/products/photo/PRODUCT-DETAIL20.png`,
+      url: `${API_URL}/products/photo/PRODUCT-DETAIL20`,
       productId: 20,
     },
   ];
@@ -609,7 +609,7 @@ async function bulkScript() {
   const order_details = [
     {
       name: "Miguel Angel",
-      url: `${API_URL}/products/photo/CARD1.png`,
+      url: `${API_URL}/products/photo/CARD1`,
       price: 10,
       amount: 1,
       size: "XS",
@@ -618,7 +618,7 @@ async function bulkScript() {
     },
     {
       name: "Freddie Mercury",
-      url: `${API_URL}/products/photo/CARD2.png`,
+      url: `${API_URL}/products/photo/CARD2`,
       price: 10,
       amount: 1,
       size: "S",
@@ -627,7 +627,7 @@ async function bulkScript() {
     },
     {
       name: "Axl Rose",
-      url: `${API_URL}/products/photo/CARD3.png`,
+      url: `${API_URL}/products/photo/CARD3`,
       price: 20,
       amount: 1,
       size: "M",
@@ -636,7 +636,7 @@ async function bulkScript() {
     },
     {
       name: "Salvador Dali",
-      url: `${API_URL}/products/photo/CARD4.png`,
+      url: `${API_URL}/products/photo/CARD4`,
       price: 20,
       amount: 1,
       size: "L",
@@ -645,7 +645,7 @@ async function bulkScript() {
     },
     {
       name: "Jim Morrison",
-      url: `${API_URL}/products/photo/CARD5.png`,
+      url: `${API_URL}/products/photo/CARD5`,
       price: 30,
       amount: 1,
       size: "XL",
@@ -654,7 +654,7 @@ async function bulkScript() {
     },
     {
       name: "Slash",
-      url: `${API_URL}/products/photo/CARD6.png`,
+      url: `${API_URL}/products/photo/CARD6`,
       price: 30,
       amount: 1,
       size: "XXL",
@@ -663,7 +663,7 @@ async function bulkScript() {
     },
     {
       name: "Miguel Angel",
-      url: `${API_URL}/products/photo/CARD1.png`,
+      url: `${API_URL}/products/photo/CARD1`,
       price: 10,
       amount: 1,
       size: "XS",
@@ -672,7 +672,7 @@ async function bulkScript() {
     },
     {
       name: "Freddie Mercury",
-      url: `${API_URL}/products/photo/CARD2.png`,
+      url: `${API_URL}/products/photo/CARD2`,
       price: 10,
       amount: 1,
       size: "S",
@@ -681,7 +681,7 @@ async function bulkScript() {
     },
     {
       name: "Axl Rose",
-      url: `${API_URL}/products/photo/CARD3.png`,
+      url: `${API_URL}/products/photo/CARD3`,
       price: 20,
       amount: 1,
       size: "M",
@@ -690,7 +690,7 @@ async function bulkScript() {
     },
     {
       name: "Salvador Dali",
-      url: `${API_URL}/products/photo/CARD4.png`,
+      url: `${API_URL}/products/photo/CARD4`,
       price: 20,
       amount: 1,
       size: "L",
@@ -699,7 +699,7 @@ async function bulkScript() {
     },
     {
       name: "Jim Morrison",
-      url: `${API_URL}/products/photo/CARD5.png`,
+      url: `${API_URL}/products/photo/CARD5`,
       price: 30,
       amount: 1,
       size: "XL",
@@ -708,7 +708,7 @@ async function bulkScript() {
     },
     {
       name: "Slash",
-      url: `${API_URL}/products/photo/CARD6.png`,
+      url: `${API_URL}/products/photo/CARD6`,
       price: 30,
       amount: 1,
       size: "XXL",
