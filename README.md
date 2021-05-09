@@ -1,5 +1,6 @@
-# G4 Shirts Back End made with React, PostgreSQL and Sequelize
+# G4 Shirts Back End
 
+Made with React, PostgreSQL and Sequelize
 Check it out at https://g4shirts.netlify.app
 Frontend: https://github.com/criiz8/g4shirts-front
 
