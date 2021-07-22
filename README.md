@@ -4,5 +4,5 @@
 
 - 📚 Check it out at https://g4shirts.netlify.app
 - 💡 Made with React, PostgreSQL and Sequelize
-- 🌐 Front End: https://github.com/criiz8/g4shirts-front
+- 🌐 Front End: https://github.com/crisariza/g4shirts-front
 
