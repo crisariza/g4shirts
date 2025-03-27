@@ -1,5 +1,7 @@
 ### G4 Shirts
 
+Project for Henry Bootcamp. Feb 2021
+
 Deployed using Vercel and Heroku
 
 - 📚 Check it out at https://g4shirts.vercel.app
