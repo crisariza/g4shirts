@@ -12,7 +12,7 @@
   "license": "ISC",
   "engines": {
     "node": ">=12.18.3",
-    "npm": ">=6.14.6"
+    "pnpm": ">=12"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -45,5 +45,6 @@
     "nodemon": "^2.0.7",
     "supertest": "^4.0.2",
     "supertest-session": "^4.0.0"
-  }
+  },
+  "packageManager": "pnpm@12.16.1"
 }
